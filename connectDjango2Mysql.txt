@@ -1,0 +1,46 @@
+-----------------------------------------------------------------------------------------------------
+0 - In your Mysql DB Creat a Database : > CREATE DATABASE MusicApp
+
+1 - Connect  Django to Mysql :
+    - Setup DJANGO to use Mysql :
+        -> sudo dpkg --configure -a
+        -> sudo apt install libmysqlclient-dev
+        -> pip3 install mysqlclient
+    - Connect Django to Mysql :
+        -> Method 01 : this Method is if you have your DB in other External Server but can work for Localserver as well
+            - in setting.py add your DB into DATABASES variabel :
+                            DATABASES = {
+                                'default': {
+                                    'ENGINE': 'django.db.backends.mysql',   # ENGINE => Mysql
+                                    'NAME': 'MusicApp',                     # DB name => Ex : MusicApp
+                                    'USER': 'root',                         # DB user
+                                    'PASSWORD': 'root',                     # DB password
+                                    'HOST': '127.0.0.1',                    # DB IP
+                                    'PORT': '3306',                         # DB PORT
+                                }
+                            }
+                                    # you can stor DB Login inftomation in a environment variable #
+                                --------------------------------------------------------
+        -> Method 02 :  This Work Just if Db in Local Server with django
+            - in setting.py add your DB into DATABASES variabel :
+                    DATABASES = {
+                        'default': {
+                            'ENGINE': 'django.db.backends.mysql',           # ENGINE => Mysql
+                            'OPTIONS':{
+                                'read_default_file': '/etc/mysql/my.cnf',
+                            },
+                        }
+                    }
+            - Then go to /etc/mysql/my.cnf and add this :
+                    [client]
+                    database = 'MusicApp'
+                    user = 'root'
+                    password = 'root'
+                    default-character-set = utf8
+
+            - you may Face an Err about Authentication Method you can Fix it Using :
+                    -> ALTER USER 'yourusername'@'localhost' IDENTIFIED WITH mysql_native_password BY 'youpassword';
+
+2 - Add your App to The INSTALLED_APPS = []
+
+
