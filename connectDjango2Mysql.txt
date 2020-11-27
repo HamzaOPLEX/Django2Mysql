@@ -38,9 +38,9 @@
                     password = 'root'
                     default-character-set = utf8
 
-            - you may Face an Err about Authentication Method you can Fix it Using :
-                    -> ALTER USER 'yourusername'@'localhost' IDENTIFIED WITH mysql_native_password BY 'youpassword';
+2 -  you may Face an Err about Authentication Method you can Fix it Using :
+        -> ALTER USER 'yourusername'@'localhost' IDENTIFIED WITH mysql_native_password BY 'youpassword';
 
-2 - Add your App to The INSTALLED_APPS = []
+3 - Add your App to The INSTALLED_APPS = []
 
-
+4 - python manage.py migrate
